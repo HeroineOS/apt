@@ -1,0 +1,39 @@
+name: publish
+
+# Rebuilds the repository from repos.txt and puts it on GitHub Pages:
+# when repos.txt or extra-debs change, every hour (new releases), or by hand.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq apt-utils xz-utils
+      - name: Build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          APT_GPG_KEY: ${{ secrets.APT_GPG_KEY }}
+        run: ./build.sh
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,17 @@
+# Which packages each suite and component holds.
+#
+#   suite     unstable (new builds land here at once, to test), testing, stable
+#   component main (Hero's own) or extra (other software, curated)
+#   source    a GitHub repository whose release .debs are used
+#   tag       "latest" (newest release, pre-releases too) or a tag like v0.1.28
+#
+# Promoting a version = putting its tag on a line of the next suite.
+# Debs placed in extra-debs/<suite>/ are published in that suite's extra.
+#
+# suite     component  source                    tag
+unstable    main       HeroineOS/HeroBar         latest
+unstable    main       HeroineOS/HeroLauncher    latest
+unstable    main       HeroineOS/HeroAppearance  latest
+unstable    main       HeroineOS/HeroWallpaper   latest
+unstable    main       HeroineOS/HeroPortal      latest
+unstable    main       HeroineOS/HeroNotify      latest

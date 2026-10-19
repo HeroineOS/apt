@@ -1,0 +1,10 @@
+<!doctype html><meta charset="utf-8"><title>HeroineOS apt repository</title>
+<body style="font-family:sans-serif;max-width:46em;margin:2em auto;line-height:1.5">
+<h1>HeroineOS apt repository</h1>
+<p>Suites: <b>unstable</b> (new builds, to test), <b>testing</b>, <b>stable</b>.
+Components: <b>main</b> (HeroineOS's own software), <b>extra</b> (other software). amd64 and arm64.</p>
+<pre>sudo curl -fsSL https://heroineos.github.io/apt/heroineos.gpg -o /etc/apt/keyrings/heroineos.gpg
+echo "deb [signed-by=/etc/apt/keyrings/heroineos.gpg] https://heroineos.github.io/apt unstable main extra" \
+  | sudo tee /etc/apt/sources.list.d/heroineos.list
+sudo apt update</pre>
+</body>
