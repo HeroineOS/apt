@@ -15,3 +15,4 @@ unstable    main       HeroineOS/HeroAppearance  latest
 unstable    main       HeroineOS/HeroWallpaper   latest
 unstable    main       HeroineOS/HeroPortal      latest
 unstable    main       HeroineOS/HeroNotify      latest
+unstable    main       HeroineOS/HeroSettings    latest
